@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>AR.js Image Tracking</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <a-assets>
+            <a-asset-item id="animated-model" src="path/to/your/3d-model.glb"></a-asset-item>
+            <img id="model-image1" src="path/to/model1.png">
+            <img id="model-image2" src="path/to/model2.png">
+            <img id="model-image3" src="path/to/model3.png">
+            <img id="model-image4" src="path/to/model4.png">
+            <img id="model-image5" src="path/to/model5.png">
+            <img id="model-image6" src="path/to/model6.png">
+            <img id="model-image7" src="path/to/model7.png">
+            <img id="model-image8" src="path/to/model8.png">
+            <img id="model-image9" src="path/to/model9.png">
+            <img id="model-image10" src="path/to/model.png">
+        </a-assets>
+
+        <a-marker type="pattern" url="trigger1.patt">
+            <a-image src="#model-image1" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger2.patt">
+            <a-image src="#model-image2" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger3.patt">
+            <a-image src="#model-image3" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger4.patt">
+            <a-image src="#model-image4" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger5.patt">
+            <a-image src="#model-image5" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger6.patt">
+            <a-image src="#model-image6" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger7.patt">
+            <a-image src="#model-image7" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger8.patt">
+            <a-image src="#model-image8" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger9.patt">
+            <a-image src="#model-image9" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-marker type="pattern" url="trigger.patt">
+            <a-image src="#model-image10" position="0 0 0" scale="1 1 1" rotation="-120 0 0"></a-image>
+            <a-entity gltf-model="#animated-model" 
+                      position="0.7 0 1" 
+                      scale="0.7 0.7 0.7" 
+                      rotation="-120 0 0" 
+                      animation-mixer="clip: Armature_Animation; loop: repeat; timeScale: 1;">
+            </a-entity>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        if (/Android/i.test(navigator.userAgent)) {
+            document.addEventListener('DOMContentLoaded', function() {
+                let scene = document.querySelector('a-scene');
+                if (scene.hasLoaded) {
+                    run();
+                } else {
+                    scene.addEventListener('loaded', run);
+                }
+
+                function run() {
+                    let arSystem = scene.systems["arjs"];
+                    arSystem.cameraParam.onload = function() {
+                        arSystem.onResize();
+                    };
+                }
+            });
+        }
+    </script>
+</body>
+</html>
