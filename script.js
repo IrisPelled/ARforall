@@ -27,10 +27,80 @@ function showUnsupportedMessage() {
 function init() {
   const os = detectOS();
   
-  if (os === 'Unknown' || !isARSupported()) {
-    showUnsupportedMessage();
-    return;
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+      // המצלמה נפתחה בהצלחה
+      startAR(os);
+    })
+    .catch(function(err) {
+      console.log("שגיאה בפתיחת המצלמה: ", err);
+      showUnsupportedMessage();
+    });
+}
+function startAR(os) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.Camera();
+  scene.add(camera);
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(640, 480);
+  document.body.appendChild(renderer.domElement);
+
+  var arToolkitSource = new THREEx.ArToolkitSource({
+    sourceType: 'webcam',
+  });
+
+  arToolkitSource.init(function onReady() {
+    onResize();
+  });
+  
+  window.addEventListener('resize', function() {
+    onResize();
+  });
+  
+  var arToolkitContext = new THREEx.ArToolkitContext({
+    cameraParametersUrl: 'data/camera_para.dat',
+    detectionMode: 'mono',
+  });
+  
+  arToolkitContext.init(function onCompleted() {
+    camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+  });
+
+  if (os === 'Android') {
+    arToolkitContext.arController.orientation = 'portrait';
+    arToolkitContext.arController.options.orientation = 'portrait';
   }
+
+  var markerRoot = new THREE.Group();
+  scene.add(markerRoot);
+  var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+    type: 'pattern',
+    patternUrl: "data/hiro.patt"
+  });
+
+  // הוסיפי כאן את האובייקטים שלך לסצנה (למשל, הקוביה והמישור)
+
+  function onResize() {
+    arToolkitSource.onResizeElement();
+    arToolkitSource.copyElementSizeTo(renderer.domElement);
+    if (arToolkitContext.arController !== null) {
+      arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas);
+    }
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if (arToolkitSource.ready !== false) {
+      arToolkitContext.update(arToolkitSource.domElement);
+    }
+    renderer.render(scene, camera);
+  }
+
+  requestAnimationFrame(animate);
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -265,4 +335,7 @@ function init() {
 }
 
 // קריאה לפונקציית init כאשר הדף נטען
+
+
 window.addEventListener('load', init);
+
